@@ -7,7 +7,6 @@
 package com.hoantran.utility;
 
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import com.hoantran.utility.comparison.CustomComparator;
@@ -38,16 +37,28 @@ public class UtilityLibrary {
     }
 
     public static void testDateTime() {
-        // Local time to GMT
-        Date localTime = new Date();
-        System.out.println("Local:\t" + localTime);
-        Date gmtTime = DateTimeFormatter.convertLocalTimeToGMT(localTime);
-        System.out.println("GMT:\t" + gmtTime);
+        // Local time to GMT (Date object)
+        // Date localTime = new Date();
+        // System.out.println("Local:\t" + localTime);
+        // Date gmtTime = DateTimeFormatter.convertLocalTimeToGMT(localTime);
+        // System.out.println("GMT:\t" + gmtTime);
 
-        // GMT time to Local
+        // GMT time to Local (Date object)
         // Date gmtTime = new Date();
         // System.out.println("GMT:\t" + gmtTime);
         // Date localTime = DateTimeFormatter.convertGMTTimeToLocal(gmtTime);
         // System.out.println("Local:\t" + localTime);
+
+        // Local time to GMT (String object)
+        // String localTime = "2016-05-22 17:16:15";
+        // System.out.println("Local:\t" + localTime);
+        // String gmtTime = DateTimeFormatter.convertLocalTimeToGMT(localTime, DateTimeFormatter.DATE_TIME_POPULAR_FORMAT);
+        // System.out.println("GMT:\t" + gmtTime);
+
+        // GMT time to Local (String object)
+        String gmtTime = "2016-05-22 17:16:15";
+        System.out.println("GMT:\t" + gmtTime);
+        String localTime = DateTimeFormatter.convertGMTTimeToLocal(gmtTime, DateTimeFormatter.DATE_TIME_POPULAR_FORMAT);
+        System.out.println("Local:\t" + localTime);
     }
 }

@@ -6,6 +6,7 @@
  */
 package com.hoantran.utility.datetime;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -15,6 +16,8 @@ import java.util.TimeZone;
  *
  */
 public class DateTimeFormatter {
+
+    public static String DATE_TIME_POPULAR_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     /**
      * Create date time formatter based on given pattern.
@@ -50,7 +53,7 @@ public class DateTimeFormatter {
     }
 
     /**
-     * Convert local time to GMT time.
+     * Convert GMT time to Local.
      * 
      * @param dateTime
      * @return
@@ -69,5 +72,47 @@ public class DateTimeFormatter {
             }
         }
         return localDateTime;
+    }
+
+    /**
+     * Convert local time to GMT time.
+     * 
+     * @param dateTimeStr
+     * @param pattern
+     * @return
+     */
+    public static String convertLocalTimeToGMT(String dateTimeStr, String pattern) {
+        SimpleDateFormat sdf = createDateTimeFormatter(pattern);
+        String result = "";
+        try {
+            Date localDate = sdf.parse(dateTimeStr);
+            Date gmtDate = convertLocalTimeToGMT(localDate);
+            result = sdf.format(gmtDate);
+        } catch (ParseException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * Convert GMT time to Local.
+     * 
+     * @param dateTimeStr
+     * @param pattern
+     * @return
+     */
+    public static String convertGMTTimeToLocal(String dateTimeStr, String pattern) {
+        SimpleDateFormat sdf = createDateTimeFormatter(pattern);
+        String result = "";
+        try {
+            Date gmtDate = sdf.parse(dateTimeStr);
+            Date localDate = convertGMTTimeToLocal(gmtDate);
+            result = sdf.format(localDate);
+        } catch (ParseException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        return result;
     }
 }
