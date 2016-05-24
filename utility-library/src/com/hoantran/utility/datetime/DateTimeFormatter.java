@@ -12,22 +12,44 @@ import java.util.Date;
 import java.util.TimeZone;
 
 /**
+ * Date time formatter.
+ * 
  * @author HoanTran
- *
  */
 public class DateTimeFormatter {
 
     public static String DATE_TIME_POPULAR_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     /**
-     * Create date time formatter based on given pattern.
+     * Parse date time from string with given pattern.
      * 
+     * @param dateTimeStr
      * @param pattern
      * @return
      */
-    public static SimpleDateFormat createDateTimeFormatter(String pattern) {
+    public static Date parseDateTimeFromString(String dateTimeStr, String pattern) {
+        Date result = null;
+        try {
+            SimpleDateFormat dateFormatter = new SimpleDateFormat(pattern);
+            result = dateFormatter.parse(dateTimeStr);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * Format date time to string with given pattern.
+     * 
+     * @param dateTime
+     * @param pattern
+     * @return
+     */
+    public static String formatDateTimeToString(Date dateTime, String pattern) {
         SimpleDateFormat dateFormatter = new SimpleDateFormat(pattern);
-        return dateFormatter;
+        String result = dateFormatter.format(dateTime);
+        return result;
     }
 
     /**
@@ -82,17 +104,9 @@ public class DateTimeFormatter {
      * @return
      */
     public static String convertLocalTimeToGMT(String dateTimeStr, String pattern) {
-        SimpleDateFormat sdf = createDateTimeFormatter(pattern);
-        String result = "";
-        try {
-            Date localDate = sdf.parse(dateTimeStr);
-            Date gmtDate = convertLocalTimeToGMT(localDate);
-            result = sdf.format(gmtDate);
-        } catch (ParseException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-        return result;
+        Date localDate = parseDateTimeFromString(dateTimeStr, pattern);
+        Date gmtDate = convertGMTTimeToLocal(localDate);
+        return formatDateTimeToString(gmtDate, pattern);
     }
 
     /**
@@ -103,16 +117,8 @@ public class DateTimeFormatter {
      * @return
      */
     public static String convertGMTTimeToLocal(String dateTimeStr, String pattern) {
-        SimpleDateFormat sdf = createDateTimeFormatter(pattern);
-        String result = "";
-        try {
-            Date gmtDate = sdf.parse(dateTimeStr);
-            Date localDate = convertGMTTimeToLocal(gmtDate);
-            result = sdf.format(localDate);
-        } catch (ParseException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-        return result;
+        Date gmtDate = parseDateTimeFromString(dateTimeStr, pattern);
+        Date localDate = convertGMTTimeToLocal(gmtDate);
+        return formatDateTimeToString(localDate, pattern);
     }
 }

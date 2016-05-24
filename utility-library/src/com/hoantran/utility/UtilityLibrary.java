@@ -10,6 +10,8 @@ import java.util.Collections;
 import java.util.List;
 
 import com.hoantran.utility.comparison.CustomComparator;
+import com.hoantran.utility.datetime.DateTimeCalculation;
+import com.hoantran.utility.datetime.DateTimeCalculation.DateTimeResult;
 import com.hoantran.utility.datetime.DateTimeFormatter;
 import com.hoantran.utility.sampledata.Developer;
 import com.hoantran.utility.sampledata.SampleDataCreation;
@@ -56,9 +58,19 @@ public class UtilityLibrary {
         // System.out.println("GMT:\t" + gmtTime);
 
         // GMT time to Local (String object)
-        String gmtTime = "2016-05-22 17:16:15";
-        System.out.println("GMT:\t" + gmtTime);
-        String localTime = DateTimeFormatter.convertGMTTimeToLocal(gmtTime, DateTimeFormatter.DATE_TIME_POPULAR_FORMAT);
-        System.out.println("Local:\t" + localTime);
+        // String gmtTime = "2016-05-22 17:16:15";
+        // System.out.println("GMT:\t" + gmtTime);
+        // String localTime = DateTimeFormatter.convertGMTTimeToLocal(gmtTime, DateTimeFormatter.DATE_TIME_POPULAR_FORMAT);
+        // System.out.println("Local:\t" + localTime);
+
+        // Calculate difference between 2 date
+        String date1 = "2016-05-22 07:16:15";
+        String date2 = "2016-06-22 19:19:15";
+        DateTimeResult result = DateTimeCalculation.calculateDifference(date1, date2, 
+                DateTimeFormatter.DATE_TIME_POPULAR_FORMAT);
+        System.out.println("Date time difference days:\t" + result.getDiffDays());
+        System.out.println("Date time difference hours:\t" + result.getDiffHours());
+        System.out.println("Date time difference minutes:\t" + result.getDiffMinutes());
+        System.out.println("Date time difference seconds:\t" + result.getDiffSeconds());
     }
 }
