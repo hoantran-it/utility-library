@@ -29,13 +29,13 @@ public class TestComparison {
 
     @Test
     public void testComparison() {
-        List<Developer> devList = SampleDataCreation.createSimpleData();
+        List<Developer> devList = SampleDataCreation.createDeveloperList();
         System.out.println("----- Before sorting -----");
-        SampleDataCreation.printSimpleData(devList);
+        SampleDataCreation.printDeveloperList(devList);
         Object[] propertyId = new Object[] { "name", "experienceYears" };
         boolean[] ascending = new boolean[] { false, false };
         Collections.sort(devList, new CustomComparator(propertyId, ascending));
         System.out.println("----- After sorting -----");
-        SampleDataCreation.printSimpleData(devList);
+        SampleDataCreation.printDeveloperList(devList);
     }
 }

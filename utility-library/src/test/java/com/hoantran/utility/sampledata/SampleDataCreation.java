@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class SampleDataCreation {
 
-    public static List<Developer> createSimpleData() {
+    public static List<Developer> createDeveloperList() {
 
         List<Developer> devList = new ArrayList<Developer>();
         Developer dev = new Developer();
@@ -39,10 +39,24 @@ public class SampleDataCreation {
 
     }
 
-    public static void printSimpleData(List<Developer> devList) {
+    public static void printDeveloperList(List<Developer> devList) {
         for (Developer dev : devList) {
-            System.out.println(String.format("%s\t%s\t%s\t%s\t%s",
-                    dev.getName(), dev.getMale(), dev.getDateOfBirth(), dev.getExperienceYears(), dev.getCompanyName()));
+            printDeveloper(dev);
         }
+    }
+
+    public static void printDeveloper(Developer dev) {
+        System.out.println(String.format("%s\t%s\t%s\t%s\t%s",
+                dev.getName(), dev.getMale(), dev.getDateOfBirth(), dev.getExperienceYears(), dev.getCompanyName()));
+    }
+
+    public static Developer createOneDeveloper() {
+        Developer dev = new Developer();
+        dev.setName("Bill");
+        dev.setMale(true);
+        dev.setDateOfBirth(new Date());
+        dev.setExperienceYears(5);
+        dev.setCompanyName("Microsoft");
+        return dev;
     }
 }

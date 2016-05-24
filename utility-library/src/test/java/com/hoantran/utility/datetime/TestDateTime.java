@@ -12,7 +12,7 @@
  * intact.
  *
  */
-package com.hoantran.utility.comparison;
+package com.hoantran.utility.datetime;
 
 import java.util.Date;
 
