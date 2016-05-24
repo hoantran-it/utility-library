@@ -57,7 +57,7 @@ public class DateTimeCalculation {
         private long diffHours;
         private long diffMinutes;
         private long diffSeconds;
-        
+
         /**
          * @return the diffDays
          */

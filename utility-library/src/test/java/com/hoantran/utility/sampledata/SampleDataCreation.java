@@ -12,13 +12,12 @@ import java.util.List;
 
 /**
  * @author HoanTran
- *
  */
 public class SampleDataCreation {
 
     public static List<Developer> createSimpleData() {
 
-        List<Developer> devList = new ArrayList<>();
+        List<Developer> devList = new ArrayList<Developer>();
         Developer dev = new Developer();
 
         dev.setName("Bill");
@@ -39,7 +38,7 @@ public class SampleDataCreation {
         return devList;
 
     }
-    
+
     public static void printSimpleData(List<Developer> devList) {
         for (Developer dev : devList) {
             System.out.println(String.format("%s\t%s\t%s\t%s\t%s",

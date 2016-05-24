@@ -10,7 +10,6 @@ import java.util.Date;
 
 /**
  * @author HoanTran
- *
  */
 public class Developer {
 
