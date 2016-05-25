@@ -14,6 +14,8 @@
  */
 package com.hoantran.utility.json;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import com.hoantran.utility.sampledata.Developer;
@@ -31,9 +33,23 @@ public class TestJsonParser {
     }
 
     @Test
+    public void converFromObjectListToJson() {
+        List<Developer> devList = SampleDataCreation.createDeveloperList();
+        System.out.println(JsonParser.converFromObjectListToJson(devList));
+    }
+
+    @Test
     public void convertFromJsontoObject() {
         String json = "{\"name\":\"Bill\",\"male\":true,\"dateOfBirth\":\"May 24, 2016 5:35:34 PM\",\"experienceYears\":5,\"companyName\":\"Microsoft\"}";
         Developer dev = (Developer) JsonParser.converFromJsonToObject(Developer.class, json);
         SampleDataCreation.printDeveloper(dev);
     }
+
+    @Test
+    public void convertFromJsontoObjectList() {
+        String json = "[{\"name\":\"Bill\",\"male\":true,\"dateOfBirth\":\"May 25, 2016 10:34:01 AM\",\"experienceYears\":5,\"companyName\":\"Microsoft\"},{\"name\":\"Steven\",\"male\":true,\"dateOfBirth\":\"May 25, 2016 10:34:01 AM\",\"experienceYears\":3,\"companyName\":\"Apple\"}]\n";
+        List<Developer> devList = JsonParser.converFromJsonToObjectList(Developer.class, json);
+        SampleDataCreation.printDeveloperList(devList);
+    }
+
 }
