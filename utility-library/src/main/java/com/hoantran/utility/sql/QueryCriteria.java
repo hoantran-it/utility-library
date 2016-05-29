@@ -27,7 +27,7 @@ public class QueryCriteria {
 
     private String operator;
 
-    private List<Object> values;
+    private List<?> values;
 
     /**
      * @return the field
@@ -60,14 +60,14 @@ public class QueryCriteria {
     /**
      * @return the values
      */
-    public List<Object> getValues() {
+    public List<?> getValues() {
         return values;
     }
 
     /**
      * @param values the values to set
      */
-    public void setValues(List<Object> values) {
+    public void setValues(List<?> values) {
         this.values = values;
     }
 

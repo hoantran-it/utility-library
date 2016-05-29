@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.hoantran.utility.sql.QueryCriteria;
+
 /**
  * @author HoanTran
  */
@@ -58,5 +60,29 @@ public class SampleDataCreation {
         dev.setExperienceYears(5);
         dev.setCompanyName("Microsoft");
         return dev;
+    }
+
+    public static List<QueryCriteria> createQueryCriteriaList() {
+        List<String> values = new ArrayList<String>();
+        values.add("value 1");
+        values.add("value 2");
+        values.add("value 3");
+
+        List<QueryCriteria> criteriaList = new ArrayList<QueryCriteria>();
+
+        QueryCriteria criteria = new QueryCriteria();
+        criteria.setField("address");
+        criteria.setOperator("=");
+        criteria.setValues(values);
+        criteriaList.add(criteria);
+
+        criteria = new QueryCriteria();
+        criteria.setField("name");
+        criteria.setOperator("=");
+        criteria.setValues(values);
+        criteriaList.add(criteria);
+
+        return criteriaList;
+
     }
 }

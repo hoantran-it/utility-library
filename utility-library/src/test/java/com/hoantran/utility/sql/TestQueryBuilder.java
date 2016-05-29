@@ -14,7 +14,11 @@
  */
 package com.hoantran.utility.sql;
 
+import java.util.List;
+
 import org.junit.Test;
+
+import com.hoantran.utility.sampledata.SampleDataCreation;
 
 /**
  * @author hoan.tran
@@ -23,7 +27,8 @@ public class TestQueryBuilder {
 
     @Test
     public void buildCriteriaClause() {
-        System.out.println(String.format("test %s, %s", "abc", "xyz"));
+        List<QueryCriteria> criteriaList = SampleDataCreation.createQueryCriteriaList();
+        System.out.println(QueryBuilder.buildCriteriaClause(criteriaList));
     }
 
 }
