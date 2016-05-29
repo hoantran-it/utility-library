@@ -1,15 +1,7 @@
 /**
- * This file Copyright (c) 2016 Magnolia International
- * Ltd.  (http://www.magnolia-cms.com). All rights reserved.
+ * Created by Hoan Tran @ http://hoantran-it.blogspot.com
  *
- *
- * This program and the accompanying materials are made
- * available under the terms of the Magnolia Network Agreement
- * which accompanies this distribution, and is available at
- * http://www.magnolia-cms.com/mna.html
- *
- * Any modifications to this file must keep this entire header
- * intact.
+ * Any modifications to this file must keep this entire header intact.
  *
  */
 package com.hoantran.utility.json;
@@ -72,30 +64,25 @@ public class JsonParser {
         return gson.fromJson(json, new ListOfJson<T>(objecClass));
     }
 
-    public static class ListOfJson<T> implements ParameterizedType
-    {
+    public static class ListOfJson<T> implements ParameterizedType {
         private Class<?> wrapped;
 
-        public ListOfJson(Class<T> wrapper)
-        {
+        public ListOfJson(Class<T> wrapper) {
             this.wrapped = wrapper;
         }
 
         @Override
-        public Type[] getActualTypeArguments()
-        {
+        public Type[] getActualTypeArguments() {
             return new Type[] { wrapped };
         }
 
         @Override
-        public Type getRawType()
-        {
+        public Type getRawType() {
             return List.class;
         }
 
         @Override
-        public Type getOwnerType()
-        {
+        public Type getOwnerType() {
             return null;
         }
     }
