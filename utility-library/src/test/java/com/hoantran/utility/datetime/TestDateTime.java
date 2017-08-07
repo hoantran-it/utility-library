@@ -9,6 +9,8 @@ package com.hoantran.utility.datetime;
 import java.util.Date;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.hoantran.utility.datetime.DateTimeCalculation.DateTimeResult;
 
@@ -17,40 +19,42 @@ import com.hoantran.utility.datetime.DateTimeCalculation.DateTimeResult;
  */
 public class TestDateTime {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TestDateTime.class);
+
     @Test
     public void convertLocalTimeToGMT_Object() {
         // Local time to GMT (Date object)
         Date localTime = new Date();
-        System.out.println("Local:\t" + localTime);
+        LOGGER.debug("Local:\t" + localTime);
         Date gmtTime = DateTimeFormatter.convertLocalTimeToGMT(localTime);
-        System.out.println("GMT:\t" + gmtTime);
+        LOGGER.debug("GMT:\t" + gmtTime);
     }
 
     @Test
     public void convertGMTTimeToLocal_Object() {
         // GMT time to Local (Date object)
         Date gmtTime = new Date();
-        System.out.println("GMT:\t" + gmtTime);
+        LOGGER.debug("GMT:\t" + gmtTime);
         Date localTime = DateTimeFormatter.convertGMTTimeToLocal(gmtTime);
-        System.out.println("Local:\t" + localTime);
+        LOGGER.debug("Local:\t" + localTime);
     }
 
     @Test
     public void convertLocalTimeToGMT_String() {
         // Local time to GMT (String object)
         String localTime = "2016-05-22 17:16:15";
-        System.out.println("Local:\t" + localTime);
+        LOGGER.debug("Local:\t" + localTime);
         String gmtTime = DateTimeFormatter.convertLocalTimeToGMT(localTime, DateTimeFormatter.DATE_TIME_POPULAR_FORMAT);
-        System.out.println("GMT:\t" + gmtTime);
+        LOGGER.debug("GMT:\t" + gmtTime);
     }
 
     @Test
     public void convertGMTTimeToLocal_String() {
         // GMT time to Local (String object)
         String gmtTime = "2016-05-22 17:16:15";
-        System.out.println("GMT:\t" + gmtTime);
+        LOGGER.debug("GMT:\t" + gmtTime);
         String localTime = DateTimeFormatter.convertGMTTimeToLocal(gmtTime, DateTimeFormatter.DATE_TIME_POPULAR_FORMAT);
-        System.out.println("Local:\t" + localTime);
+        LOGGER.debug("Local:\t" + localTime);
     }
 
     @Test
@@ -60,9 +64,9 @@ public class TestDateTime {
         String date2 = "2016-06-22 19:19:15";
         DateTimeResult result = DateTimeCalculation.calculateDifference(date1, date2,
                 DateTimeFormatter.DATE_TIME_POPULAR_FORMAT);
-        System.out.println("Date time difference days:\t" + result.getDiffDays());
-        System.out.println("Date time difference hours:\t" + result.getDiffHours());
-        System.out.println("Date time difference minutes:\t" + result.getDiffMinutes());
-        System.out.println("Date time difference seconds:\t" + result.getDiffSeconds());
+        LOGGER.debug("Date time difference days:\t" + result.getDiffDays());
+        LOGGER.debug("Date time difference hours:\t" + result.getDiffHours());
+        LOGGER.debug("Date time difference minutes:\t" + result.getDiffMinutes());
+        LOGGER.debug("Date time difference seconds:\t" + result.getDiffSeconds());
     }
 }

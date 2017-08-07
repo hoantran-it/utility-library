@@ -9,6 +9,8 @@ package com.hoantran.utility.json;
 import java.util.List;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.hoantran.utility.sampledata.Developer;
 import com.hoantran.utility.sampledata.SampleDataCreation;
@@ -18,17 +20,19 @@ import com.hoantran.utility.sampledata.SampleDataCreation;
  */
 public class TestJsonParser {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TestJsonParser.class);
+
     @Test
     public void converFromObjectToJson() {
         Developer dev = SampleDataCreation.createOneDeveloper();
-        System.out.println(JsonParser.converFromObjectToJson(dev));
+        LOGGER.debug(JsonParser.converFromObjectToJson(dev));
 
     }
 
     @Test
     public void converFromObjectListToJson() {
         List<Developer> devList = SampleDataCreation.createDeveloperList();
-        System.out.println(JsonParser.converFromObjectListToJson(devList));
+        LOGGER.debug(JsonParser.converFromObjectListToJson(devList));
     }
 
     @Test

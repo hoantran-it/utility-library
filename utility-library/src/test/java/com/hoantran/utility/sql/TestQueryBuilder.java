@@ -1,15 +1,7 @@
 /**
- * This file Copyright (c) 2016 Magnolia International
- * Ltd.  (http://www.magnolia-cms.com). All rights reserved.
+ * Created by Hoan Tran @ http://hoantran-it.blogspot.com
  *
- *
- * This program and the accompanying materials are made
- * available under the terms of the Magnolia Network Agreement
- * which accompanies this distribution, and is available at
- * http://www.magnolia-cms.com/mna.html
- *
- * Any modifications to this file must keep this entire header
- * intact.
+ * Any modifications to this file must keep this entire header intact.
  *
  */
 package com.hoantran.utility.sql;
@@ -17,6 +9,8 @@ package com.hoantran.utility.sql;
 import java.util.List;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.hoantran.utility.sampledata.SampleDataCreation;
 
@@ -25,10 +19,12 @@ import com.hoantran.utility.sampledata.SampleDataCreation;
  */
 public class TestQueryBuilder {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TestQueryBuilder.class);
+
     @Test
     public void buildCriteriaClause() {
         List<QueryCriteria> criteriaList = SampleDataCreation.createQueryCriteriaList();
-        System.out.println(QueryBuilder.buildCriteriaClause(criteriaList));
+        LOGGER.debug(QueryBuilder.buildCriteriaClause(criteriaList));
     }
 
 }
