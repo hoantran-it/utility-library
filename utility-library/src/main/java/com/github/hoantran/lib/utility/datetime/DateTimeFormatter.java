@@ -18,7 +18,7 @@ import java.util.TimeZone;
  */
 public class DateTimeFormatter {
 
-    public static String DATE_TIME_POPULAR_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    public static final String DATE_TIME_POPULAR_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     /**
      * Parse date time from string with given pattern.
