@@ -26,8 +26,8 @@ public class TestRestParams {
     @Test
     public void buildQueryParamsFromMap() throws UnsupportedEncodingException {
         Map<String, String> queryMap = new HashMap<String, String>();
-        queryMap.put("id", "123");
         queryMap.put("name", "abc");
+        queryMap.put("id", "123");
         String queryStr = RestParams.buildQueryParams(queryMap);
         assertEquals(queryStr, "name=abc&id=123");
     }

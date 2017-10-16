@@ -12,8 +12,6 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.hoantran.lib.utility.datetime.DateTimeCalculation;
-import com.github.hoantran.lib.utility.datetime.DateTimeFormatter;
 import com.github.hoantran.lib.utility.datetime.DateTimeCalculation.DateTimeResult;
 
 /**
@@ -70,5 +68,11 @@ public class TestDateTime {
         LOGGER.debug("Date time difference hours:\t" + result.getDiffHours());
         LOGGER.debug("Date time difference minutes:\t" + result.getDiffMinutes());
         LOGGER.debug("Date time difference seconds:\t" + result.getDiffSeconds());
+    }
+
+    @Test
+    public void getCurrenDateTimeForNaming() {
+        LOGGER.debug("Get current date time for naming:\t" +
+                DateTimeFormatter.formatDateTimeToString(new Date(), DateTimeFormatter.DATE_TIME_NAMING));
     }
 }

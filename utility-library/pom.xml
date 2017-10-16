@@ -3,7 +3,7 @@
     
     <groupId>com.github.hoantran-it.library</groupId>
     <artifactId>utility-library</artifactId>
-    <version>1.1</version>
+    <version>1.1.2</version>
     <packaging>jar</packaging>
     
     <name>utility-library</name>
@@ -125,6 +125,9 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
