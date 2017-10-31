@@ -4,7 +4,7 @@
  * Any modifications to this file must keep this entire header intact.
  *
  */
-package com.github.hoantran.lib.utility.criteria;
+package com.github.hoantran.lib.utility.filter;
 
 /**
  * @author hoan.tran

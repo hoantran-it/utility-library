@@ -10,6 +10,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 
 import com.amazonaws.util.IOUtils;
 
@@ -30,25 +31,23 @@ public class FileProcess {
     }
 
     public static String buildFileName(String fileName, String[] prefixs) {
+        return buildFileName(fileName, JOINER, prefixs);
+    }
+
+    public static String buildFileName(String fileName, String connector, String[] prefixs) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < prefixs.length; i++) {
             if (!prefixs[i].isEmpty()) {
                 sb.append(prefixs[i]);
-                sb.append(JOINER);
+                sb.append(connector);
             }
         }
         sb.append(fileName);
         return sb.toString();
     }
 
-    public static String buildFileName(String fileName, String connector, String[] prefixs) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < prefixs.length; i++) {
-            sb.append(prefixs[i]);
-            sb.append(connector);
-        }
-        sb.append(fileName);
-        return sb.toString();
+    public static InputStream getInputStreamFromURL(String url) throws Exception {
+        return new URL(url).openStream();
     }
 
 }
