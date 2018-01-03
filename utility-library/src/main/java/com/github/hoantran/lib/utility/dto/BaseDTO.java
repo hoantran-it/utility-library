@@ -15,11 +15,27 @@ import java.util.Date;
 @SuppressWarnings("serial")
 public class BaseDTO implements Serializable {
 
+    private String UUID;
+
     private Integer id;
 
     private Date created;
 
     private Date updated;
+
+    /**
+     * @return the uUID
+     */
+    public String getUUID() {
+        return UUID;
+    }
+
+    /**
+     * @param uUID the uUID to set
+     */
+    public void setUUID(String uUID) {
+        UUID = uUID;
+    }
 
     /**
      * @return the id
