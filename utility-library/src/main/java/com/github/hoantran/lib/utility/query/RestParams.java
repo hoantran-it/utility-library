@@ -35,7 +35,8 @@ public class RestParams {
             }
             sb.append(URLEncoder.encode(e.getKey(), DEFAULT_CHARACTER_ENCODING)).append('=').append(URLEncoder.encode(e.getValue(), DEFAULT_CHARACTER_ENCODING));
         }
-        return sb.toString();
+        // Reference: https://stackoverflow.com/questions/14357970/java-library-for-url-encoding-if-necessary-like-a-browser
+        return sb.toString().replaceAll("%2C", ",");
     }
 
 }
