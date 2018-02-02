@@ -7,18 +7,22 @@
 package com.github.hoantran.lib.utility.string;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * @author hoan.tran
  */
 public class StringConcatenation {
 
+    private final static String DEFAULT_CONNECTOR = ",";
+
     public static String concat(Collection<?> objectList, String fieldName) throws Exception {
         StringBuilder result = new StringBuilder();
         for (Object object : objectList) {
             result.append(getStringValue(object, fieldName));
-            result.append(",");
+            result.append(DEFAULT_CONNECTOR);
         }
         return result.toString();
     }
@@ -30,6 +34,14 @@ public class StringConcatenation {
             result.append(connector);
         }
         return result.toString();
+    }
+
+    public static List<String> split(String stringList) throws Exception {
+        return Arrays.asList(stringList.split(DEFAULT_CONNECTOR));
+    }
+
+    public static List<String> split(String stringList, String connector) throws Exception {
+        return Arrays.asList(stringList.split(connector));
     }
 
     @SuppressWarnings("rawtypes")
