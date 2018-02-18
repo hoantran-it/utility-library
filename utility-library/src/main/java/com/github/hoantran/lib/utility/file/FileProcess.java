@@ -7,12 +7,11 @@
 package com.github.hoantran.lib.utility.file;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
-import com.amazonaws.util.IOUtils;
+import org.apache.commons.io.IOUtils;
 
 /**
  * File process.
@@ -24,9 +23,7 @@ public class FileProcess {
     public static final String JOINER = "_";
 
     public static ByteArrayInputStream convertToByteArrInputStream(InputStream input) throws IOException {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        IOUtils.copy(input, baos);
-        byte[] bytes = baos.toByteArray();
+        byte[] bytes = IOUtils.toByteArray(input);
         return new ByteArrayInputStream(bytes);
     }
 
