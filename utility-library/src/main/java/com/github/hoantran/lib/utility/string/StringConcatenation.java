@@ -7,6 +7,7 @@
 package com.github.hoantran.lib.utility.string;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -37,6 +38,9 @@ public class StringConcatenation {
     }
 
     public static List<String> split(String stringList) throws Exception {
+        if (stringList == null || stringList.isEmpty()) {
+            return new ArrayList<String>();
+        }
         return Arrays.asList(stringList.split(DEFAULT_CONNECTOR));
     }
 
