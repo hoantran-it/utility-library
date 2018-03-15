@@ -32,4 +32,12 @@ public class TestRestParams {
         assertEquals(queryStr, "name=abc&id=123");
     }
 
+    @Test
+    public void buildPageFilter() throws UnsupportedEncodingException {
+        Map<String, String> sortMap = new HashMap<String, String>();
+        sortMap.put("created", "desc");
+        String queryStr = RestParams.buildPageFilter(0, 10, sortMap);
+        assertEquals(queryStr, "page=0&size=10&sort=created,desc");
+    }
+
 }
