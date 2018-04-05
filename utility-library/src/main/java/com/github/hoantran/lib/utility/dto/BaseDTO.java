@@ -15,7 +15,7 @@ import java.util.Date;
 @SuppressWarnings("serial")
 public class BaseDTO implements Serializable {
 
-    private String UUID;
+    private String uuid;
 
     private Integer id;
 
@@ -24,17 +24,17 @@ public class BaseDTO implements Serializable {
     private Date updated;
 
     /**
-     * @return the uUID
+     * @return the uuid
      */
-    public String getUUID() {
-        return UUID;
+    public String getUuid() {
+        return uuid;
     }
 
     /**
-     * @param uUID the uUID to set
+     * @param uuid the uuid to set
      */
-    public void setUUID(String uUID) {
-        UUID = uUID;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     /**
