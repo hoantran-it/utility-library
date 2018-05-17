@@ -19,6 +19,9 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
+import com.github.hoantran.lib.utility.image.ImageConstants.ImageExtension;
+import com.github.hoantran.lib.utility.image.ImageConstants.ImageIntType;
+
 /**
  * Image scaling.
  * 
@@ -26,18 +29,14 @@ import javax.imageio.ImageIO;
  */
 public class ImageScaling {
 
-    public static final String DEFAULT_IMAGE_FORMAT = "jpg";
-
     public static final boolean KEEP_ASPECT_RATIO = true;
 
-    public static final int DEFAULT_IMAGE_TYPE = BufferedImage.TYPE_INT_RGB;
-
     public static InputStream resizeImage(String imageUrl, int newWidth, int newHeight) throws IOException {
-        return resizeImage(new URL(imageUrl).openStream(), newWidth, newHeight, KEEP_ASPECT_RATIO, DEFAULT_IMAGE_FORMAT);
+        return resizeImage(new URL(imageUrl).openStream(), newWidth, newHeight, KEEP_ASPECT_RATIO, ImageExtension.DEFAULT_IMAGE_FORMAT);
     }
 
     public static InputStream resizeImage(String imageUrl, int newWidth, int newHeight, boolean keepAspectRatio) throws IOException {
-        return resizeImage(new URL(imageUrl).openStream(), newWidth, newHeight, keepAspectRatio, DEFAULT_IMAGE_FORMAT);
+        return resizeImage(new URL(imageUrl).openStream(), newWidth, newHeight, keepAspectRatio, ImageExtension.DEFAULT_IMAGE_FORMAT);
     }
 
     public static InputStream resizeImage(String imageUrl, int newWidth, int newHeight,
@@ -46,11 +45,11 @@ public class ImageScaling {
     }
 
     public static InputStream resizeImage(File file, int newWidth, int newHeight) throws IOException {
-        return resizeImage(new FileInputStream(file), newWidth, newHeight, KEEP_ASPECT_RATIO, DEFAULT_IMAGE_FORMAT);
+        return resizeImage(new FileInputStream(file), newWidth, newHeight, KEEP_ASPECT_RATIO, ImageExtension.DEFAULT_IMAGE_FORMAT);
     }
-    
+
     public static InputStream resizeImage(File file, int newWidth, int newHeight, boolean keepAspectRatio) throws IOException {
-        return resizeImage(new FileInputStream(file), newWidth, newHeight, keepAspectRatio, DEFAULT_IMAGE_FORMAT);
+        return resizeImage(new FileInputStream(file), newWidth, newHeight, keepAspectRatio, ImageExtension.DEFAULT_IMAGE_FORMAT);
     }
 
     public static InputStream resizeImage(File file, int newWidth, int newHeight,
@@ -59,11 +58,11 @@ public class ImageScaling {
     }
 
     public static InputStream resizeImage(InputStream input, int newWidth, int newHeight) throws IOException {
-        return resizeImage(input, newWidth, newHeight, KEEP_ASPECT_RATIO, DEFAULT_IMAGE_FORMAT);
+        return resizeImage(input, newWidth, newHeight, KEEP_ASPECT_RATIO, ImageExtension.DEFAULT_IMAGE_FORMAT);
     }
 
     public static InputStream resizeImage(InputStream input, int newWidth, int newHeight, boolean keepAspectRatio) throws IOException {
-        return resizeImage(input, newWidth, newHeight, keepAspectRatio, DEFAULT_IMAGE_FORMAT);
+        return resizeImage(input, newWidth, newHeight, keepAspectRatio, ImageExtension.DEFAULT_IMAGE_FORMAT);
     }
 
     public static InputStream resizeImage(InputStream input, int newWidth, int newHeight,
@@ -90,7 +89,7 @@ public class ImageScaling {
         Image scaledImage = originalImage.getScaledInstance((int) (originalImage.getWidth() * determineImageScale),
                 (int) (originalImage.getHeight() * determineImageScale), Image.SCALE_SMOOTH);
         BufferedImage resizedImage = new BufferedImage(scaledImage.getWidth(null), scaledImage.getHeight(null),
-                DEFAULT_IMAGE_TYPE);
+                getSuitableImageType(imageFormat));
         Graphics2D g = resizedImage.createGraphics();
         g.drawImage(scaledImage, 0, 0, null);
         g.dispose();
@@ -99,7 +98,7 @@ public class ImageScaling {
 
     public static BufferedImage resizeImageAbsolutely(BufferedImage originalImage, int newWidth, int newHeight, String imageFormat) throws IOException {
         BufferedImage resizedImage = new BufferedImage(newWidth, newHeight,
-                DEFAULT_IMAGE_TYPE);
+                getSuitableImageType(imageFormat));
         Graphics2D g = resizedImage.createGraphics();
         g.drawImage(originalImage, 0, 0, newWidth, newHeight, null);
         g.dispose();
@@ -110,6 +109,14 @@ public class ImageScaling {
         double scalex = (double) targetWidth / sourceWidth;
         double scaley = (double) targetHeight / sourceHeight;
         return Math.min(scalex, scaley);
+    }
+
+    private static int getSuitableImageType(String imageFormat) {
+        if (ImageExtension.PNG_FORMAT.equalsIgnoreCase(imageFormat)) {
+            return BufferedImage.TYPE_INT_ARGB;
+        } else {
+            return ImageIntType.DEFAULT_IMAGE_TYPE;
+        }
     }
 
 }
