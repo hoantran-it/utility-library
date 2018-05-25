@@ -19,6 +19,8 @@ public class BaseDTO implements Serializable {
 
     private Integer id;
 
+    private String captchaResponse;
+
     private Date created;
 
     private Date updated;
@@ -49,6 +51,20 @@ public class BaseDTO implements Serializable {
      */
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    /**
+     * @return the captchaResponse
+     */
+    public String getCaptchaResponse() {
+        return captchaResponse;
+    }
+
+    /**
+     * @param captchaResponse the captchaResponse to set
+     */
+    public void setCaptchaResponse(String captchaResponse) {
+        this.captchaResponse = captchaResponse;
     }
 
     /**
