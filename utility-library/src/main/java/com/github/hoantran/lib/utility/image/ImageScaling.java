@@ -113,7 +113,9 @@ public class ImageScaling {
 
     private static int getSuitableImageType(String imageFormat) {
         if (ImageExtension.PNG_FORMAT.equalsIgnoreCase(imageFormat)) {
-            return BufferedImage.TYPE_INT_ARGB;
+            return ImageIntType.PNG_IMAGE_TYPE;
+        } else if (ImageExtension.JPG_FORMAT.equalsIgnoreCase(imageFormat)) {
+            return ImageIntType.JPG_IMAGE_TYPE;
         } else {
             return ImageIntType.DEFAULT_IMAGE_TYPE;
         }

@@ -21,6 +21,8 @@ public class ImageConstants {
 
     public class ImageIntType {
         public static final int DEFAULT_IMAGE_TYPE = BufferedImage.TYPE_INT_ARGB;
+        public static final int PNG_IMAGE_TYPE = BufferedImage.TYPE_INT_ARGB;
+        public static final int JPG_IMAGE_TYPE = BufferedImage.TYPE_INT_RGB;
     }
 
 }
