@@ -6,6 +6,8 @@
  */
 package com.github.hoantran.lib.utility.converter;
 
+import java.math.BigDecimal;
+
 /**
  * @author hoan.tran
  */
@@ -16,6 +18,14 @@ public class ObjectConverter {
             return Boolean.parseBoolean(value);
         }
         return value;
+    }
+
+    public static BigDecimal getBigDecimal(String value) {
+        try {
+            return BigDecimal.valueOf(Double.parseDouble(value));
+        } catch (Exception e) {
+            return BigDecimal.ZERO;
+        }
     }
 
 }
