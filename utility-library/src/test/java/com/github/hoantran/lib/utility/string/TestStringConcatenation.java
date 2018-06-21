@@ -8,6 +8,7 @@ package com.github.hoantran.lib.utility.string;
 
 import static org.junit.Assert.assertTrue;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import org.junit.Test;
@@ -23,6 +24,13 @@ public class TestStringConcatenation {
         assertTrue(strList.get(0).toString().equals("one"));
         assertTrue(strList.get(1).toString().equals("two"));
         assertTrue(strList.get(2).toString().equals("three"));
+    }
+
+    @Test
+    public void testRemoveSpecialCharacter() throws UnsupportedEncodingException {
+        String text = "chuỗi ký tự đặc biệt";
+        assertTrue(StringManipulation.removeSpecialCharacter(text).equals("chuiktcbit"));
+        assertTrue(StringManipulation.removeSpecialCharacter(text, true).equals("chui k t c bit"));
     }
 
 }

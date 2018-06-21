@@ -9,11 +9,11 @@ package com.github.hoantran.lib.utility.file;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.net.URLEncoder;
 
 import org.apache.commons.io.IOUtils;
+
+import com.github.hoantran.lib.utility.string.StringManipulation;
 
 /**
  * File process.
@@ -29,15 +29,11 @@ public class FileProcess {
         return new ByteArrayInputStream(bytes);
     }
 
-    public static String encodeFilename(String fileName) throws UnsupportedEncodingException {
-        return URLEncoder.encode(fileName.replaceAll(" ", "_"), "UTF-8");
+    public static String buildFileName(String fileName, String[] prefixs) {
+        return buildFileName(StringManipulation.removeSpecialCharacter(fileName), JOINER, prefixs);
     }
 
-    public static String buildFileName(String fileName, String[] prefixs) throws UnsupportedEncodingException {
-        return buildFileName(encodeFilename(fileName), JOINER, prefixs);
-    }
-
-    public static String buildFileName(String fileName, String connector, String[] prefixs) throws UnsupportedEncodingException {
+    public static String buildFileName(String fileName, String connector, String[] prefixs) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < prefixs.length; i++) {
             if (!prefixs[i].isEmpty()) {
@@ -45,7 +41,7 @@ public class FileProcess {
                 sb.append(connector);
             }
         }
-        sb.append(encodeFilename(fileName));
+        sb.append(StringManipulation.removeSpecialCharacter(fileName));
         return sb.toString();
     }
 
