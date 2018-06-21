@@ -6,6 +6,7 @@
  */
 package com.github.hoantran.lib.utility.string;
 
+import org.apache.commons.lang.StringUtils;
 
 /**
  * @author hoan.tran
@@ -13,15 +14,11 @@ package com.github.hoantran.lib.utility.string;
 public class StringManipulation {
 
     public static String removeSpecialCharacter(String text) {
-        return removeSpecialCharacter(text, false);
+        return removeSpecialCharacter(text, StringUtils.EMPTY);
     }
 
-    public static String removeSpecialCharacter(String text, boolean keepSpace) {
-        if (keepSpace) {
-            return text.replaceAll("[^a-zA-Z0-9 ]+", "");
-        } else {
-            return text.replaceAll("[^a-zA-Z0-9]+", "");
-        }
+    public static String removeSpecialCharacter(String text, String keepCharacterList) {
+        return text.replaceAll("[^a-zA-Z0-9" + keepCharacterList + "]+", "");
     }
 
 }

@@ -28,9 +28,9 @@ public class TestStringConcatenation {
 
     @Test
     public void testRemoveSpecialCharacter() throws UnsupportedEncodingException {
-        String text = "chuỗi ký tự đặc biệt";
-        assertTrue(StringManipulation.removeSpecialCharacter(text).equals("chuiktcbit"));
-        assertTrue(StringManipulation.removeSpecialCharacter(text, true).equals("chui k t c bit"));
+        String text = "chuỗi ký tự đặc biệt.jpg";
+        assertTrue(StringManipulation.removeSpecialCharacter(text).equals("chuiktcbitjpg"));
+        assertTrue(StringManipulation.removeSpecialCharacter(text, " .").equals("chui k t c bit.jpg"));
     }
 
 }
