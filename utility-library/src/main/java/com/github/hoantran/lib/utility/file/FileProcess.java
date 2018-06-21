@@ -30,7 +30,7 @@ public class FileProcess {
     }
 
     public static String buildFileName(String fileName, String[] prefixs) {
-        return buildFileName(StringManipulation.removeSpecialCharacter(fileName), JOINER, prefixs);
+        return buildFileName(StringManipulation.removeSpecialCharacter(fileName, "."), JOINER, prefixs);
     }
 
     public static String buildFileName(String fileName, String connector, String[] prefixs) {
@@ -41,7 +41,7 @@ public class FileProcess {
                 sb.append(connector);
             }
         }
-        sb.append(StringManipulation.removeSpecialCharacter(fileName));
+        sb.append(StringManipulation.removeSpecialCharacter(fileName, "."));
         return sb.toString();
     }
 
