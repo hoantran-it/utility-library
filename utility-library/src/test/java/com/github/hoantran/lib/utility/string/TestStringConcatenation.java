@@ -33,4 +33,10 @@ public class TestStringConcatenation {
         assertTrue(StringManipulation.removeSpecialCharacter(text, " .").equals("chui k t c bit.jpg"));
     }
 
+    @Test
+    public void testReplaceNewLineByBrTag() throws UnsupportedEncodingException {
+        String text = "First line.\nSecond line.";
+        assertTrue(StringManipulation.replaceNewLineByBrTag(text).equals("First line.<br/>Second line."));
+    }
+
 }

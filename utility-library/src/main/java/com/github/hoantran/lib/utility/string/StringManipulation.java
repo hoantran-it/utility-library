@@ -21,4 +21,8 @@ public class StringManipulation {
         return text.replaceAll("[^a-zA-Z0-9" + keepCharacterList + "]+", "");
     }
 
+    public static String replaceNewLineByBrTag(String text) {
+        return text.replaceAll("(\r\n|\n)", "<br/>");
+    }
+
 }
