@@ -12,7 +12,6 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.hoantran.lib.utility.json.JsonParser;
 import com.github.hoantran.lib.utility.sampledata.Developer;
 import com.github.hoantran.lib.utility.sampledata.SampleDataCreation;
 
