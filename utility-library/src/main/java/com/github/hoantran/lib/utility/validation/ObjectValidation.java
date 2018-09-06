@@ -23,7 +23,7 @@ public class ObjectValidation {
     public static boolean isValidString(Object item) {
         if(isNotValid(item)) return false;
         if (item instanceof String) {
-            if (String.valueOf(item).length() == 0) {
+            if (String.valueOf(item).trim().length() == 0) {
                 return false;
             } else {
                 return true;
