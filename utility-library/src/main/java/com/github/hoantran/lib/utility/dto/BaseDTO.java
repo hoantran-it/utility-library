@@ -17,10 +17,6 @@ public class BaseDTO implements Serializable {
 
     private String uuid;
 
-    private Integer id;
-
-    private String captchaResponse;
-
     private Date created;
 
     private Date updated;
@@ -37,34 +33,6 @@ public class BaseDTO implements Serializable {
      */
     public void setUuid(String uuid) {
         this.uuid = uuid;
-    }
-
-    /**
-     * @return the id
-     */
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    /**
-     * @return the captchaResponse
-     */
-    public String getCaptchaResponse() {
-        return captchaResponse;
-    }
-
-    /**
-     * @param captchaResponse the captchaResponse to set
-     */
-    public void setCaptchaResponse(String captchaResponse) {
-        this.captchaResponse = captchaResponse;
     }
 
     /**
