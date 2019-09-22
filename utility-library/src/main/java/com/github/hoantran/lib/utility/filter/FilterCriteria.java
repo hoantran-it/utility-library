@@ -8,7 +8,6 @@ package com.github.hoantran.lib.utility.filter;
 
 /**
  * @author hoan.tran
- *
  */
 public class FilterCriteria {
 
@@ -16,14 +15,14 @@ public class FilterCriteria {
 
     private String operator;
 
-    private String value;
+    private String[] value;
 
     /**
      * @param key
      * @param operator
      * @param value
      */
-    public FilterCriteria(String key, String operator, String value) {
+    public FilterCriteria(String key, String operator, String[] value) {
         super();
         this.key = key;
         this.operator = operator;
@@ -61,14 +60,14 @@ public class FilterCriteria {
     /**
      * @return the value
      */
-    public String getValue() {
+    public String[] getValue() {
         return value;
     }
 
     /**
      * @param value the value to set
      */
-    public void setValue(String value) {
+    public void setValue(String[] value) {
         this.value = value;
     }
 
