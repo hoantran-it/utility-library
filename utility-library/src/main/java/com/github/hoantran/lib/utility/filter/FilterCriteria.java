@@ -15,18 +15,18 @@ public class FilterCriteria {
 
     private String operator;
 
-    private String[] value;
+    private String[] values;
 
     /**
      * @param key
      * @param operator
      * @param value
      */
-    public FilterCriteria(String key, String operator, String[] value) {
+    public FilterCriteria(String key, String operator, String[] values) {
         super();
         this.key = key;
         this.operator = operator;
-        this.value = value;
+        this.values = values;
     }
 
     /**
@@ -58,17 +58,17 @@ public class FilterCriteria {
     }
 
     /**
-     * @return the value
+     * @return the values
      */
-    public String[] getValue() {
-        return value;
+    public String[] getValues() {
+        return values;
     }
 
     /**
-     * @param value the value to set
+     * @param values the values to set
      */
-    public void setValue(String[] value) {
-        this.value = value;
+    public void setValues(String[] values) {
+        this.values = values;
     }
 
 }
