@@ -9,6 +9,9 @@ package com.github.hoantran.lib.utility.filter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.github.hoantran.lib.utility.json.JsonParser;
 import com.github.hoantran.lib.utility.validation.CollectionValidation;
 
@@ -16,6 +19,8 @@ import com.github.hoantran.lib.utility.validation.CollectionValidation;
  * @author hoan.tran
  */
 public class FilterProcess {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(FilterProcess.class);
 
     public static void removeFilterCriteria(List<FilterCriteria> filterList, String fieldName) {
         List<FilterCriteria> removedList = new ArrayList<FilterCriteria>();
@@ -30,7 +35,12 @@ public class FilterProcess {
     }
 
     public static List<FilterCriteria> buildFilterCriteria(String json) {
-        List<FilterCriteria> filters = JsonParser.converFromJsonToObjectList(FilterCriteria.class, json);
+        List<FilterCriteria> filters = null;
+        try {
+            filters = JsonParser.converFromJsonToObjectList(FilterCriteria.class, json);
+        } catch (Exception e) {
+            LOGGER.error("Can not build filter criteria. {}", e.getMessage());
+        }
         if (filters == null) {
             filters = new ArrayList<FilterCriteria>();
         }
