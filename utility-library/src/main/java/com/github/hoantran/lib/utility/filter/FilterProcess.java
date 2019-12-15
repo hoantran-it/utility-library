@@ -7,6 +7,7 @@
 package com.github.hoantran.lib.utility.filter;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -45,6 +46,18 @@ public class FilterProcess {
             filters = new ArrayList<FilterCriteria>();
         }
         return filters;
+    }
+
+    public static void overrideFilter(List<FilterCriteria> filterList, String fieldName, String fieldValue) {
+        Iterator<FilterCriteria> i = filterList.iterator();
+        while (i.hasNext()) {
+            FilterCriteria filter = i.next();
+            if (filter.getKey().equalsIgnoreCase(fieldName)) {
+                i.remove();
+            }
+        }
+        FilterCriteria statusFilter = new FilterCriteria(fieldName, null, new String[] { fieldValue });
+        filterList.add(statusFilter);
     }
 
 }
