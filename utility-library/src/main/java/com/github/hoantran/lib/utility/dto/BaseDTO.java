@@ -9,58 +9,20 @@ package com.github.hoantran.lib.utility.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @author HoanTran
- */
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 @SuppressWarnings("serial")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class BaseDTO implements Serializable {
 
     private String uuid;
-
     private Date created;
-
     private Date updated;
-
-    /**
-     * @return the uuid
-     */
-    public String getUuid() {
-        return uuid;
-    }
-
-    /**
-     * @param uuid the uuid to set
-     */
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    /**
-     * @return the created
-     */
-    public Date getCreated() {
-        return created;
-    }
-
-    /**
-     * @param created the created to set
-     */
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    /**
-     * @return the updated
-     */
-    public Date getUpdated() {
-        return updated;
-    }
-
-    /**
-     * @param updated the updated to set
-     */
-    public void setUpdated(Date updated) {
-        this.updated = updated;
-    }
 
 }
