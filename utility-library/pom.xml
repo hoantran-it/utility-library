@@ -3,7 +3,7 @@
 
     <groupId>com.github.hoantran-it.library</groupId>
     <artifactId>utility-library</artifactId>
-    <version>1.6.7</version>
+    <version>1.6.8</version>
     <packaging>jar</packaging>
 
     <name>utility-library</name>

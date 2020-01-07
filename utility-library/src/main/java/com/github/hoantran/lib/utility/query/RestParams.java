@@ -36,8 +36,7 @@ public class RestParams {
             }
             sb.append(URLEncoder.encode(e.getKey(), DEFAULT_CHARACTER_ENCODING)).append('=').append(URLEncoder.encode(e.getValue(), DEFAULT_CHARACTER_ENCODING));
         }
-        // Reference: https://stackoverflow.com/questions/14357970/java-library-for-url-encoding-if-necessary-like-a-browser
-        return sb.toString().replaceAll("%2C", ",");
+        return sb.toString();
     }
 
     public static String buildPageFilter(int page, int size, Map<String, String> sort) throws UnsupportedEncodingException {
