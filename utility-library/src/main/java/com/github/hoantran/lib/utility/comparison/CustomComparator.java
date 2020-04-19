@@ -43,8 +43,7 @@ public class CustomComparator implements Comparator<Object> {
         return 0;
     }
 
-    protected int compareProperty(Object propertyId, boolean sortDirection,
-            Object o1, Object o2) {
+    protected int compareProperty(Object propertyId, boolean sortDirection, Object o1, Object o2) {
         Object value1 = getPropertyValue(o1, propertyId.toString());
         Object value2 = getPropertyValue(o2, propertyId.toString());
 
